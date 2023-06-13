@@ -1,21 +1,7 @@
 import cv2
-import base64
 import jieba
 import numpy as np
 from PIL import ImageFont, ImageDraw, Image
-
-
-def image_to_base64(image_np):
-    image = cv2.imencode('.jpg', image_np)[1]
-    image_code = str(base64.b64encode(image))[2:-1]
-    return image_code
-
-
-def base64_to_image(base64_code):
-    img_data = base64.b64decode(base64_code)
-    img_array = np.frombuffer(img_data, np.uint8)
-    img = cv2.imdecode(img_array, cv2.COLOR_RGB2BGR)
-    return img
 
 
 def auto_warp(text_list, font, image, force=False):
@@ -125,34 +111,26 @@ def put_text(img, text, gray):
     return img
 
 
-def xi_bao(text, b64=True, path=None):
+def xi_bao(text, path=None):
     """
     :param text: text for xi bao
-    :param b64: return image as base64 if true. If true, path will be ignored.
     :param path: path to save image. Won't be ensured,
     :return:
     """
     xi_bao_image = cv2.imread("./assets/xi_bao.webp")
     put_text(xi_bao_image, text, False)
-    if b64:
-        return image_to_base64(xi_bao_image)
-    else:
-        cv2.imwrite(path, xi_bao_image)
+    cv2.imwrite(path, xi_bao_image)
 
 
-def bei_bao(text, b64=True, path=None):
+def bei_bao(text, path=None):
     """
     :param text: text for xi bao
-    :param b64: return image as base64 if true. If true, path will be ignored.
     :param path: path to save image. Won't be ensured,
     :return:
     """
     bei_bao_image = cv2.imread("./assets/bei_bao.webp")
     put_text(bei_bao_image, text, True)
-    if b64:
-        return image_to_base64(bei_bao_image)
-    else:
-        cv2.imwrite(path, bei_bao_image)
+    cv2.imwrite(path, bei_bao_image)
 
 
 if __name__ == '__main__':

@@ -12,8 +12,6 @@ Opencv
 
 PIL
 
-base64
-
 numpy
 
 jieba
