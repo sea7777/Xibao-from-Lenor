@@ -156,4 +156,4 @@ def bei_bao(text, b64=True, path=None):
 
 
 if __name__ == '__main__':
-    xi_bao("")
+    xi_bao("本群升级为原神群")
