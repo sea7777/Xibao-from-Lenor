@@ -122,8 +122,6 @@ def put_text(img, text, gray):
         text_mask = cv2.cvtColor(text_mask, cv2.COLOR_BGR2GRAY)
         text_mask = cv2.cvtColor(text_mask, cv2.COLOR_GRAY2BGR)
     img = overlay_image(text_mask, img)
-    cv2.imshow("test", img)
-    cv2.waitKey(0)
     return img
 
 
@@ -158,4 +156,4 @@ def bei_bao(text, b64=True, path=None):
 
 
 if __name__ == '__main__':
-    xi_bao("本群升级为原神群")
+    xi_bao("")
