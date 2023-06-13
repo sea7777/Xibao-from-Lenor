@@ -1,7 +1,12 @@
 import cv2
+import os
 import jieba
 import numpy as np
 from PIL import ImageFont, ImageDraw, Image
+
+
+def mlp(suffix):
+    return os.path.join(os.path.dirname(__file__), suffix)
 
 
 def auto_warp(text_list, font, image, force=False):
@@ -68,7 +73,7 @@ def get_text_mask(text, img):
     shape = img.shape
     img = np.ones(shape, np.uint8) * 255
     center_pos = (shape[1] // 2, shape[0] * 9 // 20)
-    font_path = "./assets/font.ttf"
+    font_path = mlp("./assets/font.ttf")
     scales = (96, 64, 48, 32, 24, 16)
     auto_scale = 0
     jieba.setLogLevel(jieba.logging.INFO)
@@ -117,7 +122,7 @@ def xi_bao(text, path=None):
     :param path: path to save image. Won't be ensured,
     :return:
     """
-    xi_bao_image = cv2.imread("./assets/xi_bao.webp")
+    xi_bao_image = cv2.imread(mlp("./assets/xi_bao.webp"))
     put_text(xi_bao_image, text, False)
     cv2.imwrite(path, xi_bao_image)
 
@@ -128,7 +133,7 @@ def bei_bao(text, path=None):
     :param path: path to save image. Won't be ensured,
     :return:
     """
-    bei_bao_image = cv2.imread("./assets/bei_bao.webp")
+    bei_bao_image = cv2.imread(mlp("./assets/bei_bao.webp"))
     put_text(bei_bao_image, text, True)
     cv2.imwrite(path, bei_bao_image)
 
