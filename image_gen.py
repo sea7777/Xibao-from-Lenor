@@ -123,7 +123,7 @@ def xi_bao(text, path=None):
     :return:
     """
     xi_bao_image = cv2.imread(mlp("./assets/xi_bao.webp"))
-    put_text(xi_bao_image, text, False)
+    xi_bao_image = put_text(xi_bao_image, text, False)
     cv2.imwrite(path, xi_bao_image)
 
 
@@ -134,7 +134,7 @@ def bei_bao(text, path=None):
     :return:
     """
     bei_bao_image = cv2.imread(mlp("./assets/bei_bao.webp"))
-    put_text(bei_bao_image, text, True)
+    bei_bao_image = put_text(bei_bao_image, text, True)
     cv2.imwrite(path, bei_bao_image)
 
 
