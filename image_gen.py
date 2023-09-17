@@ -122,9 +122,13 @@ def xi_bao(text, path=None):
     :param path: path to save image. Won't be ensured,
     :return:
     """
-    xi_bao_image = cv2.imread(mlp("./assets/xi_bao.webp"))
+    xi_bao_image = cv2.imread(mlp("assets/xi_bao.webp"))
     xi_bao_image = put_text(xi_bao_image, text, False)
-    cv2.imwrite(path, xi_bao_image)
+    #cv2.imwrite(path, xi_bao_image)
+    if not path:
+        cv2.imencode('.webp', xi_bao_image)[1].tofile('output/'+'喜报：'+text+'.webp')
+    else:
+        cv2.imencode('.webp', xi_bao_image)[1].tofile(path)
 
 
 def bei_bao(text, path=None):
@@ -133,9 +137,13 @@ def bei_bao(text, path=None):
     :param path: path to save image. Won't be ensured,
     :return:
     """
-    bei_bao_image = cv2.imread(mlp("./assets/bei_bao.webp"))
+    bei_bao_image = cv2.imread(mlp("assets/bei_bao.webp"))
     bei_bao_image = put_text(bei_bao_image, text, True)
-    cv2.imwrite(path, bei_bao_image)
+    #cv2.imwrite(path, bei_bao_image)
+    if not path:
+        cv2.imencode('.webp', bei_bao_image)[1].tofile('output/'+'悲报：'+text+'.webp')
+    else:
+        cv2.imencode('.webp', bei_bao_image)[1].tofile(path)
 
 
 if __name__ == '__main__':
